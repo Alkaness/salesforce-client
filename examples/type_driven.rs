@@ -161,6 +161,8 @@ impl From<AccountDto> for Account {
 // ============================================================================
 
 /// Helper trait for working with query results
+
+#[allow(dead_code)]
 trait QueryResultExt<T> {
     /// Filter and transform in a single iterator chain
     fn into_domain_models<U>(self) -> Vec<U>
