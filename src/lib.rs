@@ -357,9 +357,9 @@ impl SalesforceClient {
     /// # Example
     /// ```no_run
     /// # use salesforce_client::{SalesforceClient, ClientConfig, SfError};
-    /// # use serde::Deserialize;
     /// # use serde::{Deserialize, Serialize};
     /// # #[derive(Debug, Clone, Deserialize, Serialize)]
+    /// # struct Account { #[serde(rename = "Id")] id: String }
     /// # async fn example() -> Result<(), SfError> {
     /// # let config = ClientConfig::new("https://example.com", "token");
     /// # let client = SalesforceClient::new(config);
@@ -395,13 +395,13 @@ impl SalesforceClient {
     /// # Example
     /// ```no_run
     /// # use serde::{Deserialize, Serialize};
-    /// # #[derive(Debug, Clone, Deserialize, Serialize)]
+    /// # use salesforce_client::{SalesforceClient, ClientConfig, SfError};
     /// # use serde::{Deserialize, Serialize};
     /// # #[derive(Debug, Clone, Deserialize, Serialize)]
     /// # struct Account { #[serde(rename = "Id")] id: String }
+    /// # async fn example() -> Result<(), SfError> {
     /// # let config = ClientConfig::new("https://example.com", "token");
     /// # let client = SalesforceClient::new(config);
-    /// let mut pages = client
     ///     .query_paginated::<Account>("SELECT Id FROM Account")
     ///     .await?;
     ///
