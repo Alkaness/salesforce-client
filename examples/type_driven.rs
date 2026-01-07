@@ -248,3 +248,4 @@ async fn main() -> Result<(), SfError> {
 fn process_account(_id: TypedId<AccountMarker>) {
     // Implementation here
 }
+}
