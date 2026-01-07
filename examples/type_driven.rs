@@ -149,7 +149,7 @@ struct Account {
 impl From<AccountDto> for Account {
     fn from(dto: AccountDto) -> Self {
         Self {
-            id: AccountId::new(dto.id),
+            id: TypedId::new(dto.id),
             name: dto.name,
             annual_revenue: dto.annual_revenue,
         }
