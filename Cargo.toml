@@ -1,0 +1,70 @@
+[package]
+name = "salesforce-client"
+version = "0.2.0"
+edition = "2021"
+authors = ["Salesforce Rust Client Contributors"]
+description = "Production-grade Salesforce REST API client with OAuth auto-refresh, caching, retry logic, and rate limiting"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/yourusername/salesforce-client"
+documentation = "https://docs.rs/salesforce-client"
+homepage = "https://github.com/yourusername/salesforce-client"
+readme = "README.md"
+keywords = ["salesforce", "crm", "api-client", "oauth", "async"]
+categories = ["api-bindings", "web-programming::http-client"]
+rust-version = "1.70"
+exclude = [
+    ".github/",
+    "benches/",
+    "examples/",
+]
+
+[dependencies]
+# Async runtime - using tokio as the standard for async Rust
+tokio = { version = "1.41", features = ["full"] }
+
+# HTTP client with JSON support and rustls for memory-safe TLS
+reqwest = { version = "0.12", features = ["json", "rustls-tls"], default-features = false }
+
+# Serialization framework - industry standard
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Error handling - thiserror for library error types
+thiserror = "1.0"
+
+# Structured logging and tracing
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Retry logic with exponential backoff
+backoff = { version = "0.4", features = ["tokio"] }
+
+# Caching layer
+moka = { version = "0.12", features = ["future"] }
+
+# Rate limiting
+governor = "0.6"
+
+# Time handling for token expiry
+chrono = { version = "0.4", features = ["serde"] }
+
+# URL parsing and building
+url = "2.5"
+
+# Feature flags for optional functionality
+[features]
+default = ["oauth", "cache", "retry"]
+oauth = []
+cache = []
+retry = []
+bulk-api = []
+
+[dev-dependencies]
+# Testing utilities
+mockito = "1.4"
+tokio-test = "0.4"
+criterion = "0.5"
+
+[[bench]]
+name = "query_benchmark"
+harness = false
