@@ -162,7 +162,6 @@ impl From<AccountDto> for Account {
 }
 
 // ============================================================================
-// Pattern 5: Iterator chains for data transformation
 // ============================================================================
 
 /// Helper trait for working with query results
