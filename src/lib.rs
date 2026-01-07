@@ -257,6 +257,7 @@ impl SalesforceClient {
     /// ```no_run
     /// # use salesforce_client::{SalesforceClient, ClientConfig, SfError};
     /// # #[derive(Debug, Clone, Deserialize, Serialize)]
+    /// # use serde::{Deserialize, Serialize};
     /// # struct Account { #[serde(rename = "Id")] id: String }
     /// # async fn example() -> Result<(), SfError> {
     /// # let config = ClientConfig::new("https://example.com", "token");
@@ -361,6 +362,7 @@ impl SalesforceClient {
     /// # async fn example() -> Result<(), SfError> {
     /// # let client = SalesforceClient::new(config);
     /// // Fetches all accounts, automatically handling pagination
+    /// # let client = SalesforceClient::new(config);
     /// let all_accounts: Vec<Account> = client
     ///     .query_all("SELECT Id, Name FROM Account")
     ///     .await?;
