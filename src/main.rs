@@ -3,7 +3,7 @@
 //! This demonstrates how to use the type-driven client to query Salesforce
 //! data with compile-time type safety.
 
-use salesforce_client::{SalesforceClient, ClientConfig, SfError};
+use salesforce_client::{ClientConfig, SalesforceClient, SfError};
 use serde::{Deserialize, Serialize};
 
 /// Domain model for a Salesforce Account object.
@@ -64,7 +64,7 @@ async fn main() -> Result<(), SfError> {
     // Example using std::env:
     //   let base_url = std::env::var("SF_INSTANCE_URL").expect("SF_INSTANCE_URL not set");
     //   let token = std::env::var("SF_ACCESS_TOKEN").expect("SF_ACCESS_TOKEN not set");
-    
+
     let base_url = "https://yourinstance.salesforce.com";
     let access_token = "your_access_token_here";
 
@@ -83,11 +83,7 @@ async fn main() -> Result<(), SfError> {
 
     println!("📊 Found {} accounts:", accounts.len());
     for account in &accounts {
-        println!(
-            "  • {} (ID: {})",
-            account.name,
-            account.id
-        );
+        println!("  • {} (ID: {})", account.name, account.id);
         if let Some(revenue) = account.annual_revenue {
             println!("    Annual Revenue: ${:.2}", revenue);
         }
@@ -125,7 +121,10 @@ async fn main() -> Result<(), SfError> {
 /// Example showing how to handle specific error types
 #[allow(dead_code)]
 async fn example_error_handling(client: &SalesforceClient) {
-    match client.query::<Account>("SELECT Id FROM Account LIMIT 1").await {
+    match client
+        .query::<Account>("SELECT Id FROM Account LIMIT 1")
+        .await
+    {
         Ok(accounts) => {
             println!("Retrieved {} accounts", accounts.len());
         }
@@ -168,8 +167,11 @@ async fn example_concurrent_queries(client: SalesforceClient) -> Result<(), SfEr
     let accounts = accounts_result?;
     let contacts = contacts_result?;
 
-    println!("Fetched {} accounts and {} contacts concurrently", 
-             accounts.len(), contacts.len());
+    println!(
+        "Fetched {} accounts and {} contacts concurrently",
+        accounts.len(),
+        contacts.len()
+    );
 
     Ok(())
 }

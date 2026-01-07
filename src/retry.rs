@@ -69,7 +69,6 @@ impl RetryConfig {
             ..Default::default()
         }
     }
-
 }
 
 /// Determines if an error is retryable
