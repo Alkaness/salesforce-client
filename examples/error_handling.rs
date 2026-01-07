@@ -10,7 +10,6 @@ struct Account {
 }
 
 #[tokio::main]
-#[tokio::main]
 async fn main() {
     let config = ClientConfig::new(
         "https://test.salesforce.com",
@@ -18,7 +17,6 @@ async fn main() {
     );
     let client = SalesforceClient::new(config);
     let client = SalesforceClient::new(config);
-
     // Demonstrate exhaustive error matching
     match client
         .query::<Account>("SELECT Id FROM Account LIMIT 1")

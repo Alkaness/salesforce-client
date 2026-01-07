@@ -32,10 +32,13 @@ impl SalesforceId {
 
 /// Marker types for different Salesforce objects
 #[derive(Debug)]
+#[allow(dead_code)]
 struct AccountMarker;
 #[derive(Debug)]
+#[allow(dead_code)]
 struct ContactMarker;
 #[derive(Debug)]
+#[allow(dead_code)]
 struct OpportunityMarker;
 
 /// Type-safe ID that knows which object it refers to
