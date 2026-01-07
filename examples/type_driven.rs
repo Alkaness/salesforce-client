@@ -17,6 +17,7 @@ use std::marker::PhantomData;
 /// and provides a place to add validation logic.
 #[derive(Debug, Clone, PartialEq, Eq, Hash, Deserialize)]
 #[serde(transparent)]
+#[allow(dead_code)]
 struct SalesforceId(String);
 
 impl SalesforceId {
