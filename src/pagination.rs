@@ -19,6 +19,7 @@ pub(crate) struct QueryResponse<T> {
 
     /// Total number of records (optional, may not always be present)
     #[serde(rename = "totalSize")]
+    #[allow(dead_code)]
     pub total_size: Option<i32>,
 
     /// URL for fetching next batch of records
@@ -28,6 +29,7 @@ pub(crate) struct QueryResponse<T> {
 
 impl<T> QueryResponse<T> {
     /// Check if there are more records to fetch
+    #[allow(dead_code)]
     pub fn has_more(&self) -> bool {
         !self.done && self.next_records_url.is_some()
     }

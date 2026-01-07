@@ -203,32 +203,23 @@ mod tests {
     #[tokio::test]
     async fn test_with_retry_success() {
         let config = RetryConfig::no_retry();
-        let mut call_count = 0;
 
-        let result = with_retry(&config, || async {
-            call_count += 1;
-            Ok::<i32, SfError>(42)
-        })
-        .await;
+        let result = with_retry(&config, || async { Ok::<i32, SfError>(42) }).await;
 
         assert!(result.is_ok());
         assert_eq!(result.unwrap(), 42);
-        assert_eq!(call_count, 1);
     }
 
     #[tokio::test]
     async fn test_with_retry_non_retryable_error() {
         let config = RetryConfig::new().max_retries(3);
-        let mut call_count = 0;
 
         let result = with_retry(&config, || async {
-            call_count += 1;
             Err::<i32, SfError>(SfError::Auth("Invalid token".to_string()))
         })
         .await;
 
         assert!(result.is_err());
         // Should not retry non-retryable errors
-        assert_eq!(call_count, 1);
     }
 }

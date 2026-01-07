@@ -337,7 +337,8 @@ impl RecordCache {
         // Note: This is expensive - iterates all keys
         // Consider adding an index if this becomes a common operation
         let sobject_owned = sobject.to_string();
-        self.cache
+        let _ = self
+            .cache
             .invalidate_entries_if(move |key, _| key.sobject == sobject_owned);
         info!("Invalidated all cached {} records", sobject);
     }
