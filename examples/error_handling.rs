@@ -10,12 +10,13 @@ struct Account {
 }
 
 #[tokio::main]
+async fn main() {
     let config = ClientConfig::new(
         "https://test.salesforce.com",
         "fake_token_for_testing",
     );
     let client = SalesforceClient::new(config);
-    let client = SalesforceClient::new(config);
+
     // Demonstrate exhaustive error matching
     match client
         .query::<Account>("SELECT Id FROM Account LIMIT 1")
@@ -54,11 +55,11 @@ struct Account {
                 404 => eprintln!("   → Object or endpoint not found."),
                 400 => eprintln!("   → Bad request. Check your SOQL syntax."),
                 _ => eprintln!("   → Unexpected API error."),
+            }
         }
+
         Err(e) => {
             eprintln!("❌ Other error: {}", e);
-        }
-            }
         }
     }
 }
