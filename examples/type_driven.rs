@@ -234,8 +234,8 @@ async fn main() -> Result<(), SfError> {
     }
 
     // Pattern: Type-safe IDs prevent mixing different object types
-    let _account_id: AccountId = AccountId::new("001xx000003DGbXXXX".to_string());
-    let _contact_id: ContactId = ContactId::new("003xx000004TmiAAAS".to_string());
+    let _account_id: TypedId<AccountMarker> = TypedId::new("001xx000003DGbXXXX".to_string());
+    let _contact_id: TypedId<ContactMarker> = TypedId::new("003xx000004TmiAAAS".to_string());
 
     // This would be a compile error:
     // process_account(_contact_id); // ❌ Type mismatch!
