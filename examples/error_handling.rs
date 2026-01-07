@@ -11,10 +11,7 @@ struct Account {
 
 #[tokio::main]
 async fn main() {
-    let config = ClientConfig::new(
-        "https://test.salesforce.com",
-        "fake_token_for_testing",
-    );
+    let config = ClientConfig::new("https://test.salesforce.com", "fake_token_for_testing");
     let client = SalesforceClient::new(config);
 
     // Demonstrate exhaustive error matching

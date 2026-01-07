@@ -158,7 +158,6 @@ impl From<AccountDto> for Account {
             name: dto.name,
             annual_revenue: dto.annual_revenue,
         }
-
     }
 }
 // ============================================================================
@@ -248,5 +247,4 @@ async fn main() -> Result<(), SfError> {
 #[allow(dead_code)]
 fn process_account(_id: TypedId<AccountMarker>) {
     // Implementation here
-}
 }
