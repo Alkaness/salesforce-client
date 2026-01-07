@@ -360,7 +360,6 @@ impl SalesforceClient {
     /// # use serde::Deserialize;
     /// # use serde::{Deserialize, Serialize};
     /// # #[derive(Debug, Clone, Deserialize, Serialize)]
-    /// # #[derive(Deserialize)]
     /// # async fn example() -> Result<(), SfError> {
     /// # let config = ClientConfig::new("https://example.com", "token");
     /// # let client = SalesforceClient::new(config);
@@ -395,8 +394,7 @@ impl SalesforceClient {
     ///
     /// # Example
     /// ```no_run
-    /// # use salesforce_client::{SalesforceClient, ClientConfig, SfError};
-    /// # use serde::Deserialize;
+    /// # use serde::{Deserialize, Serialize};
     /// # #[derive(Debug, Clone, Deserialize, Serialize)]
     /// # use serde::{Deserialize, Serialize};
     /// # #[derive(Debug, Clone, Deserialize, Serialize)]
