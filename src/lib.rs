@@ -362,7 +362,7 @@ impl SalesforceClient {
     /// # use serde::Deserialize;
     /// # #[derive(Deserialize)]
     /// # #[derive(Debug, Clone, Deserialize, Serialize)]
-# struct Account { #[serde(rename = "Id")] id: String }
+    /// # struct Account { #[serde(rename = "Id")] id: String }
     /// # async fn example() -> Result<(), SfError> {
     /// # let config = ClientConfig::new("https://example.com", "token");
     /// # let client = SalesforceClient::new(config);
@@ -401,7 +401,7 @@ impl SalesforceClient {
     /// # use serde::Deserialize;
     /// # #[derive(Deserialize)]
     /// # #[derive(Debug, Clone, Deserialize, Serialize)]
-# struct Account { #[serde(rename = "Id")] id: String }
+    /// # struct Account { #[serde(rename = "Id")] id: String }
     /// # async fn example() -> Result<(), SfError> {
     /// # let config = ClientConfig::new("https://example.com", "token");
     /// # let client = SalesforceClient::new(config);
