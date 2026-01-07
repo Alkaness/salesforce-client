@@ -395,10 +395,10 @@ impl SalesforceClient {
     /// # use salesforce_client::{SalesforceClient, ClientConfig, SfError};
     /// # use serde::{Deserialize, Serialize};
     /// # async fn example() -> Result<(), SfError> {
-    /// # let config = ClientConfig::new("https://example.com", "token");
     ///     .await?;
     ///
     /// while let Some(batch) = pages.next().await? {
+    /// let mut pages = client
     ///     // Process each batch of records
     ///     for account in batch {
     ///         println!("{:?}", account);
