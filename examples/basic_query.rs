@@ -1,9 +1,9 @@
 //! Basic query example - demonstrates the simplest usage pattern
 
-use salesforce_client::{SalesforceClient, SfError};
-use serde::Deserialize;
+use salesforce_client::{ClientConfig, SalesforceClient, SfError};
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 struct Account {
     #[serde(rename = "Id")]
     id: String,
@@ -19,7 +19,8 @@ async fn main() -> Result<(), SfError> {
         .unwrap_or_else(|_| "https://yourinstance.salesforce.com".to_string());
     let token = std::env::var("SF_ACCESS_TOKEN").unwrap_or_else(|_| "your_token_here".to_string());
 
-    let client = SalesforceClient::new(base_url, token);
+    let config = ClientConfig::new(base_url, token);
+    let client = SalesforceClient::new(config);
 
     // Simple type-driven query
     let accounts: Vec<Account> = client

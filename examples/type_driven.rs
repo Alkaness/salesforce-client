@@ -3,8 +3,8 @@
 //! This example shows how to use Rust's type system to create safe,
 //! ergonomic abstractions over Salesforce data.
 
-use salesforce_client::{SalesforceClient, SfError};
-use serde::Deserialize;
+use salesforce_client::{ClientConfig, SalesforceClient, SfError};
+use serde::{Deserialize, Serialize};
 use std::marker::PhantomData;
 
 // ============================================================================
@@ -125,7 +125,7 @@ impl AccountQueryBuilder {
 // Pattern 4: From/Into traits for conversions
 // ============================================================================
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 struct AccountDto {
     #[serde(rename = "Id")]
     id: String,
@@ -187,7 +187,8 @@ async fn main() -> Result<(), SfError> {
         .unwrap_or_else(|_| "https://yourinstance.salesforce.com".to_string());
     let token = std::env::var("SF_ACCESS_TOKEN").unwrap_or_else(|_| "your_token_here".to_string());
 
-    let client = SalesforceClient::new(base_url, token);
+    let config = ClientConfig::new(base_url, token);
+    let client = SalesforceClient::new(config);
 
     // Pattern: Builder for type-safe query construction
     let query = AccountQueryBuilder::new()

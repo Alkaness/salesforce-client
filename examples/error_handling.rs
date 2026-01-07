@@ -1,9 +1,9 @@
 //! Error handling example - demonstrates proper error handling patterns
 
-use salesforce_client::{SalesforceClient, SfError};
-use serde::Deserialize;
+use salesforce_client::{ClientConfig, SalesforceClient, SfError};
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 struct Account {
     #[serde(rename = "Id")]
     id: String,
