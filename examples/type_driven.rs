@@ -69,6 +69,7 @@ impl<T> TypedId<T> {
 
 // Type aliases for better ergonomics
 type AccountId = TypedId<AccountMarker>;
+#[allow(dead_code)]
 type ContactId = TypedId<ContactMarker>;
 
 // ============================================================================
@@ -163,7 +164,6 @@ impl From<AccountDto> for Account {
 // ============================================================================
 
 /// Helper trait for working with query results
-
 #[allow(dead_code)]
 trait QueryResultExt<T> {
     /// Filter and transform in a single iterator chain
