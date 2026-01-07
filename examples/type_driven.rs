@@ -159,6 +159,7 @@ impl From<AccountDto> for Account {
             annual_revenue: dto.annual_revenue,
         }
 
+    }
 // ============================================================================
 
 /// Helper trait for working with query results
