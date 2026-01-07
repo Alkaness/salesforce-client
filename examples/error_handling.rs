@@ -54,6 +54,10 @@ struct Account {
                 404 => eprintln!("   → Object or endpoint not found."),
                 400 => eprintln!("   → Bad request. Check your SOQL syntax."),
                 _ => eprintln!("   → Unexpected API error."),
+        }
+        Err(e) => {
+            eprintln!("❌ Other error: {}", e);
+        }
             }
         }
     }

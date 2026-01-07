@@ -22,6 +22,7 @@ struct SalesforceId(String);
 
 impl SalesforceId {
     /// Validates that the ID is the correct length (15 or 18 characters)
+    #[allow(dead_code)]
     fn is_valid(&self) -> bool {
         self.0.len() == 15 || self.0.len() == 18
     }
@@ -247,6 +248,6 @@ async fn main() -> Result<(), SfError> {
 
 /// Example function that only accepts Account IDs
 #[allow(dead_code)]
-fn process_account(_id: AccountId) {
+fn process_account(_id: TypedId<AccountMarker>) {
     // Implementation here
 }
