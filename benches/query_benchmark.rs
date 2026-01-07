@@ -5,6 +5,7 @@ use salesforce_client::{ClientConfig, SalesforceClient};
 use serde::Deserialize;
 
 #[derive(Deserialize)]
+#[allow(dead_code)]
 struct Account {
     #[serde(rename = "Id")]
     id: String,
