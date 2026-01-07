@@ -664,7 +664,7 @@ Dev dependencies:
 
 ## Version History
 
-### 0.2.0 (2026-01)
+### 0.2.0 (2026-01-08)
 - Added OAuth auto-refresh
 - Added intelligent caching
 - Added retry logic with exponential backoff
