@@ -1,3 +1,10 @@
+[![Crates.io](https://img.shields.io/crates/v/salesforce-client.svg)](https://crates.io/crates/salesforce-client)
+[![Documentation](https://docs.rs/salesforce-client/badge.svg)](https://docs.rs/salesforce-client)
+[![CI](https://github.com/Alkaness/salesforce-client/workflows/CI/badge.svg)](https://github.com/Alkaness/salesforce-client/actions)
+[![License](https://img.shields.io/badge/license-MIT%2FApache--2.0-blue.svg)](LICENSE-MIT)
+[![Rust](https://img.shields.io/badge/rust-1.70%2B-orange.svg)](https://www.rust-lang.org)
+[![Downloads](https://img.shields.io/crates/d/salesforce-client.svg)](https://crates.io/crates/salesforce-client)
+
 # Salesforce API Client for Rust
 
 A production-grade, type-driven Salesforce REST API client library for Rust.
